@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NAV_LINKS } from "../common/consts";
 import { GlobeAsiaAustraliaIcon } from "@heroicons/react/24/solid";
+import { TextButton } from "./TextButton";
 
 export const Menu = () => {
     return (
@@ -15,12 +16,17 @@ export const Menu = () => {
             </Link>
             <ul className="flex flex-col gap-y-5 px-4">
                 {NAV_LINKS.map((link) => (
-                    <li
-                        key={link.page}
-                        className="font-medium hover:font-bold hover:text-highlight-blue transition-colors"
-                    >
-                        <Link href={link.path}>{link.page}</Link>
-                    </li>
+                    // <TextButton key={link.page} label={link.page}>
+                    <Link href={link.path} key={link.page}>
+                        <TextButton state="menu" label={link.page} />
+                    </Link>
+
+                    // </TextButton>
+                    // <li
+                    //     key={link.page}
+                    //     className="font-medium hover:font-bold hover:text-highlight-blue transition-colors"
+                    // >
+                    // </li>
                 ))}
             </ul>
         </div>
