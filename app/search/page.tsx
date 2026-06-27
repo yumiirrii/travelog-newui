@@ -24,15 +24,17 @@ export default function SearchPage() {
                     {/* 検索エリア */}
                     <div className="flex gap-x-10">
                         <FormField label="TRAVEL_DATE" error="">
-                            <input
-                                type="date"
-                                className="bg-white p-2 border-[#626262] border-1 cursor-pointer"
-                            />
-                            ~
-                            <input
-                                type="date"
-                                className="bg-white p-2 border-[#626262] border-1 cursor-pointer"
-                            />
+                            <div className="flex gap-x-3 items-center">
+                                <input
+                                    type="date"
+                                    className="bg-white p-2 border-[#626262] border-1 cursor-pointer"
+                                />
+                                <span className="font-medium">~</span>
+                                <input
+                                    type="date"
+                                    className="bg-white p-2 border-[#626262] border-1 cursor-pointer"
+                                />
+                            </div>
                         </FormField>
                         <FormField label="DESTINATION" error="">
                             <Input type="text" />
