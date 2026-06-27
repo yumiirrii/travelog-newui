@@ -1,4 +1,4 @@
-import { TextLink } from "./components/TextLink";
+import { TextLink } from "./components/ui/TextLink";
 
 export default function Top() {
     return (
@@ -15,7 +15,7 @@ export default function Top() {
                 </h2>
                 <div className="flex gap-x-20 pt-10">
                     <TextLink label={"> CREATE"} path="/create" />
-                    <TextLink label={"> SEARCH"} path="" />
+                    <TextLink label={"> SEARCH"} path="/search" />
                 </div>
             </div>
         </div>

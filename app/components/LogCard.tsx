@@ -1,20 +1,22 @@
 import { Log } from "../common/consts";
-import { TextButton } from "./TextButton";
+import { TextButton } from "./ui/TextButton";
 
 type Props = {
     log: Log;
 };
 
-export const DetailItem = ({ log }: Props) => {
+export const LogCard = ({ log }: Props) => {
     return (
         <div className="w-full h-fit bg-zinc-50 flex gap-x-7 px-7 py-3 items-center">
-            <div className="text-michroma text-xl [-webkit-text-stroke:1px_#275c8b]">
+            <div className="font-michroma text-xl [-webkit-text-stroke:2px_#275c8b]">
                 D_01
             </div>
             <div className="flex flex-col gap-y-5">
-                <div className="flex justify-between">
-                    <p className="font-medium">{log.spot}</p>
-                    <p>{log.category}</p>
+                <div className="flex justify-between items-center font-medium">
+                    <p>{log.spot}</p>
+                    <p className="text-sm text-white bg-base-blue px-1">
+                        {log.category}
+                    </p>
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <p className="text-sm">{log.note}</p>

@@ -1,10 +1,10 @@
 import { CATEGORY_OPTIONS } from "../common/consts";
-import { Button } from "./Button";
-import { FormField } from "./FormField";
-import { Input } from "./Input";
-import { PageTitle } from "./PageTitle";
-import { SeparatorLine } from "./SeparatorLine";
-import { TextButton } from "./TextButton";
+import { Button } from "./ui/Button";
+import { FormField } from "./ui/FormField";
+import { Input } from "./ui/Input";
+import { PageTitle } from "./ui/PageTitle";
+import { SeparatorLine } from "./ui/SeparatorLine";
+import { TextButton } from "./ui/TextButton";
 
 type Props = {
     closeModal: () => void;

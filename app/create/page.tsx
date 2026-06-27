@@ -1,10 +1,10 @@
-import { FormField } from "../components/FormField";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import { FormField } from "../components/ui/FormField";
+import { Input } from "../components/ui/Input";
+import { Button } from "../components/ui/Button";
 import { Menu } from "../components/Menu";
-import { PageTitle } from "../components/PageTitle";
-import { SeparatorLine } from "../components/SeparatorLine";
-import { TextButton } from "../components/TextButton";
+import { PageTitle } from "../components/ui/PageTitle";
+import { SeparatorLine } from "../components/ui/SeparatorLine";
+import { TextButton } from "../components/ui/TextButton";
 
 export default function CreatePage() {
     return (

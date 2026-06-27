@@ -1,15 +1,16 @@
 "use client";
 
-import { Button } from "@/app/components/Button";
-import { DataField } from "@/app/components/DataField";
+import { Button } from "@/app/components/ui/Button";
+import { DataField } from "@/app/components/ui/DataField";
 import { DetailFormModal } from "@/app/components/DetailFormModal";
 import { Menu } from "@/app/components/Menu";
-import { PageTitle } from "@/app/components/PageTitle";
-import { SeparatorLine } from "@/app/components/SeparatorLine";
-import { TextButton } from "@/app/components/TextButton";
+import { PageTitle } from "@/app/components/ui/PageTitle";
+import { SeparatorLine } from "@/app/components/ui/SeparatorLine";
+import { TextButton } from "@/app/components/ui/TextButton";
 import { useState } from "react";
-import { DetailItem } from "./DetailItem";
 import { Log } from "../common/consts";
+import { LogCard } from "./LogCard";
+import { BasicInfoField } from "./ui/BasicInfoField";
 
 type Props = {
     id: string;
@@ -21,6 +22,12 @@ const logItem: Log = {
     spot: "Seoul Tower",
     note: "Accessed by Bus#100. 5 min walk from ABC bus stop. Open until 22:00 except weekends.",
     expense: "10000",
+};
+
+const travel = {
+    dateStart: "2026.03.05",
+    dateEnd: "2026.03.07",
+    destination: "SEOUL",
 };
 
 export const LogClient = ({ id }: Props) => {
@@ -54,12 +61,7 @@ export const LogClient = ({ id }: Props) => {
                             left
                         />
                         <SeparatorLine />
-                        <DataField label="ID" value={id} />
-                        <DataField
-                            label="TRAVEL_DATE"
-                            value="2026.03.05 ~ 2026.03.07"
-                        />
-                        <DataField label="DESTINATION" value="Seoul" />
+                        <BasicInfoField basicInfo={travel} />
                         <SeparatorLine />
                         <div className="w-full flex jusify-between items-center">
                             <DataField label="DAY_01" value="2026.03.05" />
@@ -76,7 +78,14 @@ export const LogClient = ({ id }: Props) => {
                     </div>
                 </div>
 
-                <DetailItem log={logItem} />
+                <div className="flex-1">
+                    <LogCard log={logItem} />
+                    <SeparatorLine detailList />
+                    <LogCard log={logItem} />
+                    <SeparatorLine detailList />
+                    <LogCard log={logItem} />
+                    <SeparatorLine detailList />
+                </div>
             </div>
 
             {isOpen && <DetailFormModal closeModal={closeModal} />}

@@ -2,7 +2,7 @@
 export const NAV_LINKS = [
     { page: "> TOP", path: "/" },
     { page: "> CREATE", path: "/create" },
-    { page: "> SEARCH", path: "" },
+    { page: "> SEARCH", path: "/search" },
 ] as const;
 
 /** フォーム用のカテゴリオプション */
@@ -21,4 +21,10 @@ export type Log = {
     spot: string;
     note: string;
     expense: string;
+};
+
+export type Travel = {
+    dateStart: string;
+    dateEnd: string;
+    destination: string;
 };
