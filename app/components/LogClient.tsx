@@ -2,7 +2,7 @@
 
 import { Button } from "@/app/components/ui/Button";
 import { DataField } from "@/app/components/ui/DataField";
-import { DetailFormModal } from "@/app/components/DetailFormModal";
+import { LogFormModal } from "@/app/components/LogFormModal";
 import { Menu } from "@/app/components/Menu";
 import { PageTitle } from "@/app/components/ui/PageTitle";
 import { SeparatorLine } from "@/app/components/ui/SeparatorLine";
@@ -88,7 +88,7 @@ export const LogClient = ({ id }: Props) => {
                 </div>
             </div>
 
-            {isOpen && <DetailFormModal closeModal={closeModal} />}
+            {isOpen && <LogFormModal closeModal={closeModal} />}
         </div>
     );
 };

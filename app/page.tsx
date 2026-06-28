@@ -1,6 +1,10 @@
 import { TextLink } from "./components/ui/TextLink";
+import { fetchTravels } from "@/lib/db";
 
-export default function Top() {
+export default async function Top() {
+    const result = await fetchTravels();
+    console.log("接続成功:", result);
+
     return (
         <div
             className="min-h-screen bg-cover bg-center font-michroma flex flex-col items-center justify-center"

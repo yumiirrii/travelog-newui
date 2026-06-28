@@ -10,7 +10,7 @@ type Props = {
     closeModal: () => void;
 };
 
-export const DetailFormModal = ({ closeModal }: Props) => {
+export const LogFormModal = ({ closeModal }: Props) => {
     return (
         <div
             className="fixed inset-0 z-50 overflow-y-auto"
