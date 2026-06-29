@@ -10,7 +10,9 @@ export const Button = ({ label, className, large, onClick }: Props) => {
         <button
             type="button"
             onClick={onClick}
-            className={`w-fit bg-zinc-200 text-nowrap ${large ? "px-8 py-3.5" : "px-5 py-3"}  cursor-pointer hover:bg-base-gray outline-offset-4 outline-white hover:outline-4 font-semibold hover:font-bold text-sm text-base-blue hover:text-highlight-blue transition-colors ${className}`}
+            style={{ "--glow-color": "#007aff" } as React.CSSProperties}
+            // className={`w-fit bg-zinc-200 text-nowrap ${large ? "px-8 py-3.5" : "px-5 py-3"}  cursor-pointer hover:bg-base-gray outline-offset-4 outline-white hover:outline-4 font-semibold hover:font-bold text-sm text-base-blue hover:text-highlight-blue transition-colors ${className}`}
+            className={`w-fit bg-zinc-200 text-nowrap ${large ? "px-8 py-3.5" : "px-5 py-3"}  cursor-pointer hover:bg-base-gray outline-offset-4 outline-white hover:outline-4 font-semibold text-sm text-base-blue glow-on-hover transition-colors ${className}`}
         >
             {label}
         </button>

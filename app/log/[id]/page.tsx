@@ -237,7 +237,7 @@ export default function LogPage() {
                                             openModal(
                                                 date,
                                                 log,
-                                                `DAY_0${index}`,
+                                                `DAY_0${index + 1}`,
                                             )
                                         }
                                     />
@@ -261,7 +261,7 @@ export default function LogPage() {
                                     onDetail={openModal}
                                     onDelete={deleteLog}
                                 />
-                                <SeparatorLine detailList />
+                                {/* <SeparatorLine detailList /> */}
                             </div>
                         );
                     })}

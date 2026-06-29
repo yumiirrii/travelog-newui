@@ -84,11 +84,21 @@ export async function fetchTravelBySearchCon(
     date_end: string,
     destination: string,
 ) {
+    // try {
+    //     const rows =
+    //         await sql`SELECT * FROM travel WHERE (${date_end} = '' OR date_start <= ${date_end}) AND (${date_start} = '' OR date_end >= ${date_start}) AND (${destination} = '' OR destination LIKE ${
+    //             destination + "%"
+    //         }) ORDER BY date_start DESC`;
+    //     return z.array(TravelSchema).parse(rows);
+    // } catch (error) {
+    //     console.error("Database Error:", error);
+    //     throw error;
+    // }
     try {
         const rows =
             await sql`SELECT * FROM travel WHERE (${date_end} = '' OR date_start <= ${date_end}) AND (${date_start} = '' OR date_end >= ${date_start}) AND (${destination} = '' OR destination LIKE ${
                 destination + "%"
-            }) ORDER BY date_start DESC`;
+            }) ORDER BY id DESC`;
         return z.array(TravelSchema).parse(rows);
     } catch (error) {
         console.error("Database Error:", error);
