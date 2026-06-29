@@ -14,6 +14,14 @@ export const CATEGORY_OPTIONS = [
     { label: "SHOPPING", value: 5 },
     { label: "OTHER", value: 6 },
 ];
+// export const CATEGORY_OPTIONS: { [key: number]: string } = {
+//     1: "SIGHTSEEING",
+//     2: "MEAL",
+//     3: "ACCOMMODATION",
+//     4: "ENTERTAINMENT",
+//     5: "SHOPPING",
+//     6: "OTHER",
+// };
 
 export type Log = {
     date: string;

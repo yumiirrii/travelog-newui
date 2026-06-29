@@ -98,9 +98,18 @@ export async function fetchTravelBySearchCon(
 
 // log取得
 export async function fetchLogsByTravelId(travelId: number) {
+    // try {
+    //     const rows = await sql`
+    //     SELECT * FROM log WHERE travel_id=${travelId} ORDER BY id
+    //     `;
+    //     return z.array(UpdateLogSchema).parse(rows);
+    // } catch (error) {
+    //     console.error("Database Error:", error);
+    //     throw error;
+    // }
     try {
         const rows = await sql`
-        SELECT * FROM log WHERE travel_id=${travelId} ORDER BY id
+        SELECT * FROM log WHERE travel_id=${travelId} ORDER BY date ASC, created_at ASC
         `;
         return z.array(UpdateLogSchema).parse(rows);
     } catch (error) {
