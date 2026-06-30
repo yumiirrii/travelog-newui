@@ -7,14 +7,8 @@ export default function Top() {
             style={{ backgroundImage: "url('/top-bg.png')" }}
         >
             <div className="flex flex-col items-center">
-                {/* <h1 className="text-[108px]/36 text-base-gray/80 [-webkit-text-stroke:4px_white]">
-                    TRAVELOG
-                </h1>
-                <h2 className="text-5xl tracking-wide text-base-gray/80 [-webkit-text-stroke:2px_white]">
-                    TRAVEL DATA ARCHIVE
-                </h2> */}
-                <h1 className="text-[108px]/36 glow-on">TRAVELOG</h1>
-                <h2 className="text-5xl tracking-wide glow-on">
+                <h1 className="text-[108px]/36 glow-on-title">TRAVELOG</h1>
+                <h2 className="text-5xl tracking-wide glow-on-title">
                     TRAVEL DATA ARCHIVE
                 </h2>
                 <div className="flex gap-x-20 pt-10">

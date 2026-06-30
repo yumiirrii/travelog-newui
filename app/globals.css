@@ -56,11 +56,20 @@
         /* 外側のぼわっとした光 */ 0 0 15px var(--glow-color) !important;
 }
 
-.glow-on {
+.glow-on-title {
     color: #f5f5f5 !important;
     text-shadow:
   /* 芯を太くする */
         0 0 2px #fff,
         /* 中間の光 */ 0 0 4px #fff,
         /* 外側のぼわっとした光 */ 0 0 10px #fff !important;
+}
+
+.glow-on-page-title {
+    color: #404040 !important;
+    text-shadow:
+  /* 芯を太くする */
+        0 0 1px #404040,
+        /* 中間の光 */ 0 0 1px #404040,
+        /* 外側のぼわっとした光 */ 0 0 2px #404040 !important;
 }
