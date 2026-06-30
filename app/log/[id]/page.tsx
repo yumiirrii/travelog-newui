@@ -40,8 +40,9 @@ export default function LogPage() {
     const [selectedDate, setSelectedDate] = useState<string | null>(null);
     const [log, setLog] = useState<UpdateDetailForm | null>(null);
     const [modalDayLabel, setModalDayLabel] = useState<string>("");
+    const [errors, setErrors] = useState<string[]>([]);
 
-    /** travel情報取得処理 */
+    /** travel取得処理 */
     const fetchTravel = async (id: number) => {
         try {
             const res = await fetch(`http://localhost:3000/api/travel/${id}`, {
@@ -56,7 +57,7 @@ export default function LogPage() {
         }
     };
 
-    /** log情報取得処理 */
+    /** log一覧取得処理 */
     const fetchLogs = async (id: number) => {
         try {
             const res = await fetch(
@@ -74,10 +75,10 @@ export default function LogPage() {
 
     /** データ取得処理 */
     const getData = async (id: number) => {
-        // travel情報取得
+        // travel取得
         const travel = await fetchTravel(id);
         if (travel) {
-            // log情報取得
+            // log一覧取得
             const logs = await fetchLogs(travel.id);
             setBasicInfo(travel);
             if (logs) {
@@ -108,24 +109,26 @@ export default function LogPage() {
         setModalDayLabel(dayLabel);
     };
 
-    /** Modal内 [CANCEL]ボタン押下時処理 */
-    const closeModal = (
+    /** Modal内 [SUBMIT]/[CANCEL]ボタン押下時処理 */
+    const closeModal = async (
         detailForm: CreateDetailForm | UpdateDetailForm | null,
         isEdit: boolean,
     ) => {
+        setErrors([]);
         if (detailForm) {
-            handleSubmit(detailForm, isEdit);
+            const isSuccess = await handleSubmit(detailForm, isEdit);
+            if (!isSuccess) return;
         }
         openModal("", null, modalDayLabel);
     };
 
-    /** Modal内 [SUBMIT]ボタン押下時処理 */
+    /** log登録/更新処理 */
     const handleSubmit = async (
         detailForm: CreateDetailForm | UpdateDetailForm,
         isEdit: boolean,
     ) => {
-        // update
         if (isEdit) {
+            // 更新
             const parsedForm = UpdateLogSchema.safeParse(detailForm);
             if (parsedForm.success) {
                 try {
@@ -142,11 +145,14 @@ export default function LogPage() {
                 } catch (error) {
                     console.error(error);
                 }
+                return true;
             } else {
-                console.error(parsedForm.error);
+                const messages = parsedForm.error.issues.map((i) => i.message);
+                setErrors(messages);
+                return false;
             }
         } else {
-            // insert
+            // 新規
             const parsedForm = CreateLogSchema.safeParse(detailForm);
             if (parsedForm.success) {
                 try {
@@ -163,8 +169,11 @@ export default function LogPage() {
                 } catch (error) {
                     console.error(error);
                 }
+                return true;
             } else {
-                console.error(parsedForm.error);
+                const messages = parsedForm.error.issues.map((i) => i.message);
+                setErrors(messages);
+                return false;
             }
         }
     };
@@ -274,6 +283,7 @@ export default function LogPage() {
                     travel_id={basicInfo.id}
                     date={selectedDate}
                     dayLabel={modalDayLabel}
+                    errors={errors}
                     onClose={closeModal}
                 />
             )}

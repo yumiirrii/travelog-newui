@@ -1,3 +1,5 @@
+import { BasicForm } from "@/lib/validators/travel";
+
 /** ヘッダーナビゲーション用のページリンク */
 export const NAV_LINKS = [
     { page: "> TOP", path: "/" },
@@ -13,26 +15,4 @@ export const CATEGORY_OPTIONS = [
     { label: "ENTERTAINMENT", value: 4 },
     { label: "SHOPPING", value: 5 },
     { label: "OTHER", value: 6 },
-];
-// export const CATEGORY_OPTIONS: { [key: number]: string } = {
-//     1: "SIGHTSEEING",
-//     2: "MEAL",
-//     3: "ACCOMMODATION",
-//     4: "ENTERTAINMENT",
-//     5: "SHOPPING",
-//     6: "OTHER",
-// };
-
-export type Log = {
-    date: string;
-    category: string;
-    spot: string;
-    note: string;
-    expense: string;
-};
-
-export type Travel = {
-    dateStart: string;
-    dateEnd: string;
-    destination: string;
-};
+] as const;

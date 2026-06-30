@@ -15,6 +15,7 @@ export default function SearchPage() {
     const [travels, setTravels] = useState<Travel[]>([]);
     const router = useRouter();
 
+    /** travel一覧取得処理 */
     const fetchTravels = async () => {
         try {
             const res = await fetch(`http://localhost:3000/api/travel`, {
@@ -29,6 +30,7 @@ export default function SearchPage() {
         }
     };
 
+    /** log一覧取得処理 */
     const fetchLogs = async (id: number) => {
         try {
             const res = await fetch(
@@ -44,6 +46,7 @@ export default function SearchPage() {
         }
     };
 
+    /** log削除処理 */
     const deleteLog = async (travelId: number) => {
         const fetchedLogs = await fetchLogs(travelId);
         if (fetchedLogs) {
@@ -64,6 +67,7 @@ export default function SearchPage() {
         }
     };
 
+    /** travel削除処理 */
     const deleteTravel = async (id: number) => {
         try {
             const res = await fetch("/api/travel", {
@@ -81,15 +85,20 @@ export default function SearchPage() {
         }
     };
 
+    /** [DELETE]ボタン押下時処理 */
     const deleteItem = async (id: number) => {
+        // log削除
         await deleteLog(id);
+        // travel削除
         await deleteTravel(id);
     };
 
+    /** [SEE LOG]ボタン押下時処理 */
     const handleDetail = async (id: number) => {
         router.push(`/log/${id}`);
     };
 
+    /** 検索処理 */
     const fetchSearchTravel = async (params: BasicForm) => {
         try {
             const newParams = new URLSearchParams();

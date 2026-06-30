@@ -7,12 +7,14 @@ import { PageTitle } from "./ui/PageTitle";
 import { SeparatorLine } from "./ui/SeparatorLine";
 import { TextButton } from "./ui/TextButton";
 import { ChangeEvent, useState } from "react";
+import { ErrorMessage } from "./ui/ErrorMessage";
 
 type Props = {
     log: UpdateDetailForm | null;
     travel_id: number;
     date: string;
     dayLabel: string;
+    errors: string[];
     onClose: (
         detailForm: CreateDetailForm | UpdateDetailForm | null,
         isEdit: boolean,
@@ -24,6 +26,7 @@ export const LogFormModal = ({
     travel_id,
     date,
     dayLabel,
+    errors,
     onClose,
 }: Props) => {
     const isEdit: boolean = !!log; //log ? true : falseと同義;
@@ -78,6 +81,7 @@ export const LogFormModal = ({
                 </div>
                 <SeparatorLine left />
 
+                <ErrorMessage errors={errors} />
                 <FormField label="CATEGORY" column detailForm>
                     <div className="flex flex-col font-medium pl-5">
                         {CATEGORY_OPTIONS.map((option) => (

@@ -14,6 +14,7 @@ import {
     TravelSchema,
 } from "@/lib/validators/travel";
 import { TravelForm } from "../components/TravelForm";
+import { ErrorMessage } from "../components/ui/ErrorMessage";
 
 export default function CreatePage() {
     const router = useRouter();
@@ -25,7 +26,9 @@ export default function CreatePage() {
         date_end: new Date().toISOString().split("T")[0],
         destination: "",
     });
+    const [errors, setErrors] = useState<string[]>([]);
 
+    /** travel取得処理 */
     const fetchTravel = async (id: number) => {
         try {
             const res = await fetch(`http://localhost:3000/api/travel/${id}`, {
@@ -52,17 +55,20 @@ export default function CreatePage() {
                     });
                 }
             };
+            // id発行済の場合、travel取得
             loadTravel();
         }
     }, [id]);
 
+    /** [NEXT]ボタン押下時処理 */
     const handleSubmit = async () => {
         // e.preventDefault();
-        // update
         if (id) {
+            // 更新
             const dataToValidate = { id, ...basicForm };
             const parsedForm = TravelSchema.safeParse(dataToValidate);
             if (parsedForm.success) {
+                setErrors([]);
                 try {
                     const res = await fetch("/api/travel", {
                         method: "PUT",
@@ -77,11 +83,15 @@ export default function CreatePage() {
                     console.error(error);
                 }
             } else {
-                console.error(parsedForm.error);
+                const messages = parsedForm.error.issues.map((i) => i.message);
+                setErrors(messages);
+                return;
             }
         } else {
+            // 新規
             const parsedForm = BasicFormSchema.safeParse(basicForm);
             if (parsedForm.success) {
+                setErrors([]);
                 try {
                     const res = await fetch("/api/travel", {
                         method: "POST",
@@ -97,11 +107,14 @@ export default function CreatePage() {
                     console.error(error);
                 }
             } else {
-                console.error(parsedForm.error);
+                const messages = parsedForm.error.issues.map((i) => i.message);
+                setErrors(messages);
+                return;
             }
         }
     };
 
+    /** travel削除処理 */
     const deleteTravel = async (id: number) => {
         try {
             const res = await fetch("/api/travel", {
@@ -117,8 +130,10 @@ export default function CreatePage() {
         }
     };
 
+    /** [BACK]ボタン押下時処理 */
     const onBack = () => {
         if (id) {
+            // id発行済の場合travel削除
             deleteTravel(id);
             console.log("deleted travel");
         }
@@ -144,6 +159,8 @@ export default function CreatePage() {
                             instruction={`> Input basic travel information for creating a new record.`}
                         />
                         <SeparatorLine />
+
+                        <ErrorMessage errors={errors} />
                         <TravelForm
                             basicForm={basicForm}
                             setBasicForm={setBasicForm}

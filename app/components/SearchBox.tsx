@@ -19,6 +19,7 @@ export const SearchBox = ({ onSearch }: Props) => {
         onSearch(params);
     }, 500);
 
+    /** 検索ボックス入力時処理 */
     const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         const updated = { ...searchCon, [name]: value || "" };

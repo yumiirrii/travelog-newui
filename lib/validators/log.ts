@@ -3,7 +3,7 @@ import { z } from "zod";
 export const LogSchema = z.object({
     date: z.string(),
     category: z.number(),
-    spot: z.string(),
+    spot: z.string().min(1, "Spot is required."),
     note: z.string(),
     expense: z.string(),
     travel_id: z.number(),
