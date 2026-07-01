@@ -8,12 +8,14 @@ export const SeparatorLine = ({ left, detailList }: Props) => {
         <>
             {detailList ? (
                 <p
-                    className={`w-full text-sm ${left ? "" : "text-center"} ${detailList ? "bg-zinc-50" : ""}`}
+                    className={`w-full text-xs md:text-sm ${left ? "" : "text-center"} ${detailList ? "bg-zinc-50" : ""}`}
                 >
-                    -------------------------------------------------------
+                    --------------------------------------------------
                 </p>
             ) : (
-                <p className={`w-full text-sm ${left ? "" : "text-center"}`}>
+                <p
+                    className={`w-full text-xs md:text-sm ${left ? "" : "text-center"}`}
+                >
                     ------------------------------------------
                 </p>
             )}

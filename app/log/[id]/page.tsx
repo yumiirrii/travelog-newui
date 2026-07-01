@@ -208,8 +208,8 @@ export default function LogPage() {
     return (
         <div className="flex">
             <Menu />
-            <div className="flex flex-1">
-                <div className="bg-base-gray w-[480px] h-full flex flex-col gap-y-5 px-15 py-10">
+            <div className="flex flex-col md:flex-row flex-1">
+                <div className="bg-base-gray w-full md:w-[480px] min-h-screen md:h-full flex flex-col gap-y-5 px-7 md:px-15 py-10">
                     <TextButton state="back" onClick={onBack} />
                     <div className="flex flex-col items-center gap-y-5 ">
                         <PageTitle
@@ -250,12 +250,12 @@ export default function LogPage() {
                 </div>
 
                 <div
-                    className="flex-1 min-w-[480px] scroll-x-auto"
-                    style={{
-                        backgroundImage: "url('/log-bg.png')",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center 30%",
-                    }}
+                    className="flex-1 md:min-w-[480px] md:scroll-x-auto bg-none md:bg-[url('/log-bg.png')] bg-cover bg-[center_30%]"
+                    // style={{
+                    //     backgroundImage: "url('/log-bg.png')",
+                    //     backgroundSize: "cover",
+                    //     backgroundPosition: "center 30%",
+                    // }}
                 >
                     {logs.map((log) => {
                         const dayIndex = dateList.findIndex(

@@ -29,7 +29,7 @@ export const SearchBox = ({ onSearch }: Props) => {
     };
 
     return (
-        <div className="flex gap-x-10">
+        <div className="flex flex-col md:flex-row gap-5 md:gap-10">
             <FormField label="TRAVEL_DATE" error="">
                 <div className="flex gap-x-3 items-center">
                     <Input

@@ -7,16 +7,16 @@ type Props = {
 
 export const TextButton = ({ label, state, className, onClick }: Props) => {
     const styles = {
-        back: "text-base-blue",
-        menu: "",
+        back: "text-sm md:text-base text-base-blue",
+        menu: "text-sm md:text-base",
         cancel: "text-base-blue text-sm",
         edit: "text-base-blue text-xs",
         delete: "text-base-blue text-xs",
     };
 
     const glowColors = {
-        back: "#007aff",
-        menu: "#7a7a7a",
+        back: "#007aff", // 青
+        menu: "#7a7a7a", // グレー
         cancel: "#ff3b30", // 赤
         edit: "#34c759", // 緑
         delete: "#ff3b30", // 赤

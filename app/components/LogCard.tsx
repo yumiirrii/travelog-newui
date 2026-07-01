@@ -17,8 +17,8 @@ type Props = {
 export const LogCard = ({ log, dayLabel, onDetail, onDelete }: Props) => {
     return (
         <>
-            <div className="w-full h-fit bg-zinc-50 flex gap-x-7 px-7 pt-3 items-center">
-                <div className="font-michroma text-xl [-webkit-text-stroke:2px_#275c8b]">
+            <div className="w-full h-fit bg-zinc-50 flex gap-x-4 md:gap-x-7 px-4 md:px-7 pt-3 items-center">
+                <div className="font-michroma text-xs md:text-xl [-webkit-text-stroke:2px_#275c8b]">
                     {dayLabel}
                 </div>
                 <div className="flex flex-col gap-y-5 w-full">

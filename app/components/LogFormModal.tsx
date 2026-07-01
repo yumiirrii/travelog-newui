@@ -65,10 +65,10 @@ export const LogFormModal = ({
 
     return (
         <div
-            className="fixed inset-0 z-50 overflow-y-auto"
+            className="fixed inset-0 z-50 overflow-y-auto bg-cover bg-center"
             style={{ backgroundImage: `url('/overlay.png')` }}
         >
-            <div className="w-fit h-fit bg-zinc-50 flex flex-col gap-y-5 px-15 py-10 items-start mx-auto my-10">
+            <div className="w-full min-h-screen md:w-fit md:h-fit bg-zinc-50 flex flex-col gap-y-5 px-15 py-10 items-start mx-auto my-0 md:my-10">
                 <PageTitle
                     title="DETAIL LOG"
                     instruction={`> Select category and input\ndetail of the spot you visited.`}
