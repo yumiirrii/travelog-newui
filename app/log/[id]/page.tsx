@@ -3,7 +3,7 @@
 import { calcDates } from "@/app/common/utils";
 import { LogCard } from "@/app/components/LogCard";
 import { LogFormModal } from "@/app/components/LogFormModal";
-import { Menu } from "@/app/components/Menu";
+import { Menu } from "@/app/components/menu/Menu";
 import { BasicInfoField } from "@/app/components/ui/BasicInfoField";
 import { Button } from "@/app/components/ui/Button";
 import { DataField } from "@/app/components/ui/DataField";

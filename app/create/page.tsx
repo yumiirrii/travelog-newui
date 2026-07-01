@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "../components/ui/Button";
-import { Menu } from "../components/Menu";
+import { Menu } from "../components/menu/Menu";
 import { PageTitle } from "../components/ui/PageTitle";
 import { SeparatorLine } from "../components/ui/SeparatorLine";
 import { TextButton } from "../components/ui/TextButton";

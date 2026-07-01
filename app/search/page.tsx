@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Menu } from "../components/Menu";
+import { Menu } from "../components/menu/Menu";
 import { SearchBox } from "../components/SearchBox";
 import { TravelCard } from "../components/TravelCard";
 import { PageTitle } from "../components/ui/PageTitle";
