@@ -24,13 +24,15 @@ export const LogCard = ({ log, dayLabel, onDetail, onDelete }: Props) => {
                 <div className="flex flex-col gap-y-5 w-full">
                     <div className="flex justify-between items-center font-medium">
                         <p>{log.spot}</p>
-                        <p className="text-sm text-white bg-base-blue px-1">
+                        <p className="text-sm text-white bg-base-blue px-1 ml-2">
                             {convertToLabel(log.category)}
                         </p>
                     </div>
                     <div className="flex flex-col gap-y-2">
                         <p className="text-sm">{log.note}</p>
-                        <p className="text-xs">{log.expense}</p>
+                        <p className="text-xs">
+                            {Number(log.expense).toLocaleString()}
+                        </p>
                         <div className="w-full flex justify-end gap-x-5">
                             <TextButton
                                 label={`> EDIT`}

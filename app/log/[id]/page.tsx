@@ -1,6 +1,6 @@
 "use client";
 
-import { calcDates } from "@/app/common/utils";
+import { calcDates, formatToDotDate } from "@/app/common/utils";
 import { LogCard } from "@/app/components/LogCard";
 import { LogFormModal } from "@/app/components/LogFormModal";
 import { Menu } from "@/app/components/menu/Menu";
@@ -206,10 +206,10 @@ export default function LogPage() {
     };
 
     return (
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
             <Menu />
             <div className="flex flex-col md:flex-row flex-1">
-                <div className="bg-base-gray w-full md:w-[480px] min-h-screen md:h-full flex flex-col gap-y-5 px-7 md:px-15 py-10">
+                <div className="bg-base-gray w-full md:w-[480px] h-fit md:h-full flex flex-col gap-y-5 px-7 md:px-15 py-10">
                     <TextButton state="back" onClick={onBack} />
                     <div className="flex flex-col items-center gap-y-5 ">
                         <PageTitle
@@ -231,7 +231,7 @@ export default function LogPage() {
                                 >
                                     <DataField
                                         label={`DAY_0${index + 1}`}
-                                        value={date}
+                                        value={formatToDotDate(date)}
                                     />
                                     <Button
                                         label="ADD LOG"
@@ -259,7 +259,7 @@ export default function LogPage() {
                 >
                     {logs.map((log) => {
                         const dayIndex = dateList.findIndex(
-                            (date) => date === log.date,
+                            (date) => formatToDotDate(date) === log.date,
                         );
 
                         return (
@@ -280,7 +280,7 @@ export default function LogPage() {
                 <LogFormModal
                     log={log}
                     travel_id={basicInfo.id}
-                    date={selectedDate}
+                    date={formatToDotDate(selectedDate)}
                     dayLabel={modalDayLabel}
                     errors={errors}
                     onClose={closeModal}

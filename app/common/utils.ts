@@ -1,4 +1,3 @@
-import z from "zod";
 import { CATEGORY_OPTIONS } from "./consts";
 
 /**
@@ -24,4 +23,8 @@ export const calcDates = (date_start: string, date_end: string) => {
  */
 export const convertToLabel = (value: number) => {
     return CATEGORY_OPTIONS.find((option) => option.value === value)?.label;
+};
+
+export const formatToDotDate = (date: string) => {
+    return date.replace(/-/g, ".");
 };

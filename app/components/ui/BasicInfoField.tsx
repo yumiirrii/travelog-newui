@@ -1,5 +1,6 @@
 import { Travel } from "@/lib/validators/travel";
 import { DataField } from "./DataField";
+import { formatToDotDate } from "@/app/common/utils";
 
 export const BasicInfoField = ({ basicInfo }: { basicInfo: Travel }) => {
     return (
@@ -7,7 +8,7 @@ export const BasicInfoField = ({ basicInfo }: { basicInfo: Travel }) => {
             <DataField label="ID" value={String(basicInfo.id)} />
             <DataField
                 label="TRAVEL_DATE"
-                value={`${basicInfo.date_start} ~ ${basicInfo.date_end}`}
+                value={`${formatToDotDate(basicInfo.date_start)} ~ ${formatToDotDate(basicInfo.date_end)}`}
             />
             <DataField label="DESTINATION" value={basicInfo.destination} />
         </div>
