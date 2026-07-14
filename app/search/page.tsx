@@ -18,7 +18,7 @@ export default function SearchPage() {
     /** travel一覧取得処理 */
     const fetchTravels = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/travel`, {
+            const res = await fetch(`/api/travel`, {
                 cache: "no-store",
             });
             if (!res.ok) throw new Error("Failed to fetch travel");
@@ -33,10 +33,9 @@ export default function SearchPage() {
     /** log一覧取得処理 */
     const fetchLogs = async (id: number) => {
         try {
-            const res = await fetch(
-                `http://localhost:3000/api/log?travel_id=${id}`,
-                { cache: "no-store" },
-            );
+            const res = await fetch(`/api/log?travel_id=${id}`, {
+                cache: "no-store",
+            });
             if (!res.ok) throw new Error("Failed to fetch travel");
             const fetchedLogs: UpdateDetailForm[] = await res.json();
             return fetchedLogs;
@@ -108,7 +107,7 @@ export default function SearchPage() {
             if (params.destination)
                 newParams.append("destination", params.destination);
             const res = await fetch(
-                `http://localhost:3000/api/travel/search?${newParams.toString()}`,
+                `/api/travel/search?${newParams.toString()}`,
                 { cache: "no-store" },
             );
             if (!res.ok) throw new Error("Failed to fetch travel");

@@ -45,7 +45,7 @@ export default function LogPage() {
     /** travel取得処理 */
     const fetchTravel = async (id: number) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/travel/${id}`, {
+            const res = await fetch(`/api/travel/${id}`, {
                 cache: "no-store",
             });
             if (!res.ok) throw new Error("Failed to fetch travel");
@@ -60,10 +60,9 @@ export default function LogPage() {
     /** log一覧取得処理 */
     const fetchLogs = async (id: number) => {
         try {
-            const res = await fetch(
-                `http://localhost:3000/api/log?travel_id=${id}`,
-                { cache: "no-store" },
-            );
+            const res = await fetch(`/api/log?travel_id=${id}`, {
+                cache: "no-store",
+            });
             if (!res.ok) throw new Error("Failed to fetch travel");
             const fetchedLogs: UpdateDetailForm[] = await res.json();
             return fetchedLogs;
