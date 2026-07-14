@@ -6,7 +6,7 @@ import { PageTitle } from "../components/ui/PageTitle";
 import { SeparatorLine } from "../components/ui/SeparatorLine";
 import { TextButton } from "../components/ui/TextButton";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import {
     BasicForm,
     BasicFormSchema,
@@ -16,7 +16,7 @@ import {
 import { TravelForm } from "../components/TravelForm";
 import { ErrorMessage } from "../components/ui/ErrorMessage";
 
-export default function CreatePage() {
+function CreatePageContent() {
     const router = useRouter();
     // クエリパラメータ
     const searchParams = useSearchParams();
@@ -31,7 +31,7 @@ export default function CreatePage() {
     /** travel取得処理 */
     const fetchTravel = async (id: number) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/travel/${id}`, {
+            const res = await fetch(`/api/travel/${id}`, {
                 cache: "no-store",
             });
             if (!res.ok) throw new Error("Failed to fetch travel");
@@ -143,14 +143,7 @@ export default function CreatePage() {
     return (
         <div className="flex flex-col md:flex-row">
             <Menu />
-            <div
-                className="min-h-screen flex flex-1 bg-none md:bg-[url('/create-bg.png')] bg-cover bg-center md:bg-bottom"
-                // style={{
-                //     backgroundImage: "url('/create-bg.png')",
-                //     backgroundSize: "cover",
-                //     backgroundPosition: "center bottom",
-                // }}
-            >
+            <div className="min-h-screen flex flex-1 bg-none md:bg-[url('/create-bg.png')] bg-cover bg-center md:bg-bottom">
                 <div className="flex-1 bg-base-gray w-full md:h-fit flex flex-col gap-y-5 px-7 md:px-15 py-10">
                     <TextButton state="back" onClick={onBack} />
                     <div className="flex flex-col items-center gap-y-5">
@@ -173,5 +166,13 @@ export default function CreatePage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function CreatePage() {
+    return (
+        <Suspense fallback={null}>
+            <CreatePageContent />
+        </Suspense>
     );
 }
