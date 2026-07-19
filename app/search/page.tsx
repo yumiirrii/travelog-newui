@@ -127,7 +127,7 @@ export default function SearchPage() {
         <div className="flex flex-col md:flex-row">
             <Menu />
 
-            <div className="flex-1 bg-base-gray flex flex-col gap-y-5 px-7 md:px-15 py-10">
+            <div className="flex-1 bg-base-gray flex flex-col gap-y-5 px-7 md:px-15 py-10 min-h-screen">
                 <TextButton state="back" onClick={() => router.push("/")} />
 
                 <div className="flex flex-col gap-y-5 items-center">
@@ -143,8 +143,6 @@ export default function SearchPage() {
                     <SeparatorLine />
 
                     {/* 一覧エリア */}
-                    {/* <div className="grid grid-cols-[repeat(auto-fill、260px)] gap-5"> */}
-                    {/* <div className="flex flex-wrap gap-5 justify-start w-full"> */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {travels.map((travel) => (
                             <TravelCard
