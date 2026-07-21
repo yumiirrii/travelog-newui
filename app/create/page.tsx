@@ -141,7 +141,7 @@ function CreatePageContent() {
     };
 
     return (
-        <div className="flex flex-col md:flex-row">
+        <div className="w-full flex flex-col md:flex-row">
             <Menu />
             <div className="min-h-screen flex flex-1 bg-none md:bg-[url('/create-bg.png')] bg-cover bg-center md:bg-bottom">
                 <div className="flex-1 bg-base-gray w-full md:h-fit flex flex-col gap-y-5 px-7 md:px-15 py-10">
