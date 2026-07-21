@@ -16,7 +16,7 @@ export const FormField = ({
     return (
         <div className="flex flex-col gap-y-2">
             <div
-                className={`flex gap-2 md:gap-5 text-sm md:text-base ${column ? "flex-col" : detailForm ? "flex-col md:flex-row items-start" : "flex-col md:flex-row items-center"}`}
+                className={`flex gap-2 md:gap-5 text-sm md:text-base ${column ? "flex-col" : detailForm ? "flex-col md:flex-row items-start md:items-center" : "flex-col md:flex-row items-center"}`}
             >
                 <label
                     className={`${detailForm ? "w-20 text-sm" : "font-medium"}`}

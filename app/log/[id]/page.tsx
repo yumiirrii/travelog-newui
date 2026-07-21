@@ -226,7 +226,7 @@ export default function LogPage() {
                             {dateList.map((date, index) => (
                                 <div
                                     key={date}
-                                    className="w-full flex jusify-between items-center"
+                                    className="w-full flex gap-x-30 md:justify-between items-center"
                                 >
                                     <DataField
                                         label={`DAY_0${index + 1}`}
@@ -248,14 +248,7 @@ export default function LogPage() {
                     </div>
                 </div>
 
-                <div
-                    className="flex-1 md:min-w-[480px] md:scroll-x-auto bg-none md:bg-[url('/log-bg.png')] bg-cover bg-[center_30%]"
-                    // style={{
-                    //     backgroundImage: "url('/log-bg.png')",
-                    //     backgroundSize: "cover",
-                    //     backgroundPosition: "center 30%",
-                    // }}
-                >
+                <div className="flex-1 md:min-w-[480px] md:scroll-x-auto bg-none md:bg-[url('/log-bg.png')] bg-cover bg-[center_30%]">
                     {logs.map((log) => {
                         const dayIndex = dateList.findIndex(
                             (date) => formatToDotDate(date) === log.date,
