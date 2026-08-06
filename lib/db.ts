@@ -16,7 +16,7 @@ const sql = postgres(process.env.DATABASE_URL!, {
 export async function fetchTravels() {
     try {
         const rows = await sql`
-        SELECT * FROM travel ORDER BY date_start DESC
+        SELECT * FROM travel ORDER BY date_start DESC, id DESC
         `;
         return z.array(TravelSchema).parse(rows);
     } catch (error) {
