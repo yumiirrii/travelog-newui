@@ -41,6 +41,7 @@ export default function LogPage() {
     const [log, setLog] = useState<UpdateDetailForm | null>(null);
     const [modalDayLabel, setModalDayLabel] = useState<string>("");
     const [errors, setErrors] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     /** travel取得処理 */
     const fetchTravel = async (id: number) => {
@@ -130,6 +131,7 @@ export default function LogPage() {
             // 更新
             const parsedForm = UpdateLogSchema.safeParse(detailForm);
             if (parsedForm.success) {
+                setIsLoading(true);
                 try {
                     const res = await fetch("/api/log", {
                         method: "PUT",
@@ -143,6 +145,7 @@ export default function LogPage() {
                     await getData(travelId);
                 } catch (error) {
                     console.error(error);
+                    setIsLoading(false);
                 }
                 return true;
             } else {
@@ -154,6 +157,7 @@ export default function LogPage() {
             // 新規
             const parsedForm = CreateLogSchema.safeParse(detailForm);
             if (parsedForm.success) {
+                setIsLoading(true);
                 try {
                     const res = await fetch("/api/log", {
                         method: "POST",
@@ -167,6 +171,7 @@ export default function LogPage() {
                     await getData(travelId);
                 } catch (error) {
                     console.error(error);
+                    setIsLoading(false);
                 }
                 return true;
             } else {
@@ -278,6 +283,7 @@ export default function LogPage() {
                     dayLabel={modalDayLabel}
                     errors={errors}
                     onClose={closeModal}
+                    isLoading={isLoading}
                 />
             )}
         </div>

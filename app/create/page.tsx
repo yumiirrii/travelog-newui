@@ -27,6 +27,7 @@ function CreatePageContent() {
         destination: "",
     });
     const [errors, setErrors] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     /** travel取得処理 */
     const fetchTravel = async (id: number) => {
@@ -69,6 +70,7 @@ function CreatePageContent() {
             const parsedForm = TravelSchema.safeParse(dataToValidate);
             if (parsedForm.success) {
                 setErrors([]);
+                setIsLoading(true);
                 try {
                     const res = await fetch("/api/travel", {
                         method: "PUT",
@@ -81,6 +83,7 @@ function CreatePageContent() {
                     router.push(`/log/${id}?from=create`);
                 } catch (error) {
                     console.error(error);
+                    setIsLoading(false);
                 }
             } else {
                 const messages = parsedForm.error.issues.map((i) => i.message);
@@ -92,6 +95,7 @@ function CreatePageContent() {
             const parsedForm = BasicFormSchema.safeParse(basicForm);
             if (parsedForm.success) {
                 setErrors([]);
+                setIsLoading(true);
                 try {
                     const res = await fetch("/api/travel", {
                         method: "POST",
@@ -105,6 +109,7 @@ function CreatePageContent() {
                     router.push(`/log/${data.id}?from=create`);
                 } catch (error) {
                     console.error(error);
+                    setIsLoading(false);
                 }
             } else {
                 const messages = parsedForm.error.issues.map((i) => i.message);
@@ -160,7 +165,12 @@ function CreatePageContent() {
                         />
 
                         <div className="pt-3">
-                            <Button label="NEXT" large onClick={handleSubmit} />
+                            <Button
+                                label="NEXT"
+                                large
+                                onClick={handleSubmit}
+                                isLoading={isLoading}
+                            />
                         </div>
                     </div>
                 </div>

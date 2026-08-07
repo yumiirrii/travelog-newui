@@ -19,6 +19,7 @@ type Props = {
         detailForm: CreateDetailForm | UpdateDetailForm | null,
         isEdit: boolean,
     ) => void;
+    isLoading?: boolean;
 };
 
 export const LogFormModal = ({
@@ -28,6 +29,7 @@ export const LogFormModal = ({
     dayLabel,
     errors,
     onClose,
+    isLoading,
 }: Props) => {
     const isEdit: boolean = !!log; //log ? true : falseと同義;
     const [detailForm, setDetailForm] = useState<
@@ -147,6 +149,7 @@ export const LogFormModal = ({
                                 onClose(detailForm, false);
                             }
                         }}
+                        isLoading={isLoading}
                     />
                 </div>
             </div>
